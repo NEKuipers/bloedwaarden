@@ -6,44 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/kiesWekenZwanger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aantal weken zwanger:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/spinnerWekenZwanger"
+        app:layout_constraintEnd_toEndOf="@+id/nTime"
+        app:layout_constraintStart_toStartOf="@+id/nTime"
+        app:layout_constraintTop_toBottomOf="@id/nTime" />
+
+    <Spinner
+        android:id="@+id/spinnerRisico"
+        android:layout_width="137dp"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:hint="dataset"
+        app:layout_constraintBottom_toTopOf="@+id/kiesGewicht"
+        app:layout_constraintEnd_toEndOf="@+id/kiesRisicoFactoren"
+        app:layout_constraintHorizontal_bias="0.547"
+        app:layout_constraintStart_toStartOf="@+id/kiesRisicoFactoren"
+        app:layout_constraintTop_toBottomOf="@+id/kiesRisicoFactoren"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Spinner
+        android:id="@+id/spinnerWekenZwanger"
+        android:layout_width="148dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="10dp"
+        android:hint="dataset"
+        app:layout_constraintBottom_toTopOf="@+id/kiesRisicoFactoren"
+        app:layout_constraintEnd_toEndOf="@+id/kiesWekenZwanger"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="@+id/kiesWekenZwanger"
+        app:layout_constraintTop_toBottomOf="@id/kiesWekenZwanger"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/kiesGewicht"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecteer gewicht:"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/spinnerGewicht"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerRisico"
+        app:layout_constraintStart_toStartOf="@+id/spinnerRisico"
+        app:layout_constraintTop_toBottomOf="@id/spinnerRisico" />
 
     <TextView
         android:id="@+id/voerBloedwaardeIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Vul bloedwaarde in:"
+        android:layout_marginTop="8dp"
+        android:text="Vul bilirubinegehalte in:"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/bloedwaarde"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintEnd_toEndOf="@+id/spinnerGewicht"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/spinnerGewicht"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerGewicht" />
+
 
     <TextView
         android:id="@+id/kiesBloedprikDatum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
         android:text="Selecteer datum bloedwaardemeting:"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/bloodDate"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bloedwaarde"
+        app:layout_constraintStart_toStartOf="@+id/bloedwaarde"
         app:layout_constraintTop_toBottomOf="@id/bloedwaarde" />
 
-
     <TextView
-        android:id="@+id/kiesDataSet"
+        android:id="@+id/kiesRisicoFactoren"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Selecteer dataset:"
+        android:text="Risicofactoren:"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@id/spinner"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nTime" />
+        app:layout_constraintBottom_toTopOf="@id/spinnerRisico"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerWekenZwanger"
+        app:layout_constraintStart_toStartOf="@+id/spinnerWekenZwanger"
+        app:layout_constraintTop_toBottomOf="@id/spinnerWekenZwanger" />
 
     <TextView
         android:id="@+id/kiesDatum"
@@ -57,42 +105,45 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.678" />
+        app:layout_constraintVertical_bias="0.678"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/kiesTijd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:text="Selecteer geboortetijd:"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@id/nTime"
+        app:layout_constraintEnd_toEndOf="@+id/nDate"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/nDate"
         app:layout_constraintTop_toBottomOf="@id/nDate" />
 
     <TextView
         android:id="@+id/kiesBloedprikTijd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Selecteer tijd bloedwaardemeting:"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@id/bloodTime"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bloodDate"
+        app:layout_constraintStart_toStartOf="@+id/bloodDate"
         app:layout_constraintTop_toBottomOf="@id/bloodDate" />
 
     <TextView
         android:id="@+id/nTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="00:00"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/kiesDataSet"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/kiesWekenZwanger"
+        app:layout_constraintEnd_toEndOf="@+id/kiesTijd"
+        app:layout_constraintStart_toStartOf="@+id/kiesTijd"
         app:layout_constraintTop_toBottomOf="@+id/kiesTijd"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -102,23 +153,23 @@
         android:layout_height="wrap_content"
         android:hint="00:00"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@id/goOnButton"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kiesBloedprikTijd"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/kiesBloedprikTijd"
         app:layout_constraintTop_toBottomOf="@+id/kiesBloedprikTijd" />
 
     <TextView
         android:id="@+id/nDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:hint="01/01/2021"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@id/kiesTijd"
+        app:layout_constraintEnd_toEndOf="@+id/kiesDatum"
         app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/kiesDatum"
         app:layout_constraintTop_toBottomOf="@id/kiesDatum"
         app:layout_constraintVertical_bias="0.146" />
 
@@ -126,25 +177,27 @@
         android:id="@+id/bloodDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="8dp"
         android:hint="01/01/2021"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintBottom_toTopOf="@id/kiesBloedprikTijd"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/kiesBloedprikDatum"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/kiesBloedprikDatum"
         app:layout_constraintTop_toBottomOf="@id/kiesBloedprikDatum" />
 
     <Button
         android:id="@+id/goOnButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:text="verder"
-        app:layout_constraintStart_toEndOf="@id/resetButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bloodTime"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/resetButton"
+        app:layout_constraintTop_toBottomOf="@id/bloodTime"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/resetButton"
@@ -154,36 +207,52 @@
         android:text="reset"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/goOnButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bloodTime"
-        app:layout_constraintVertical_bias="0.517" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:id="@+id/spinnerGewicht"
+        android:layout_width="170dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="8dp"
         android:hint="dataset"
         app:layout_constraintBottom_toTopOf="@id/voerBloedwaardeIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kiesDataSet" />
+        app:layout_constraintEnd_toEndOf="@+id/kiesGewicht"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="@+id/kiesGewicht"
+        app:layout_constraintTop_toBottomOf="@+id/kiesGewicht" />
 
     <EditText
         android:id="@+id/bloedwaarde"
         android:layout_width="122dp"
         android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:ems="10"
         android:inputType="number"
         android:text=""
         android:textAlignment="center"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/kiesBloedprikDatum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/voerBloedwaardeIn"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/voerBloedwaardeIn"
         app:layout_constraintTop_toBottomOf="@+id/voerBloedwaardeIn"
         app:layout_constraintVertical_bias="0.065" />
+
+    <Button
+        android:id="@+id/buttonRiskInfo"
+        android:layout_width="69dp"
+        android:layout_height="39dp"
+        android:text="info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.457"
+        app:layout_constraintStart_toEndOf="@+id/kiesRisicoFactoren"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.437" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

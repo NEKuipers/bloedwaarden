@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Bloedwaarden</string>
+    <string-array name="arrayWekenZwanger">
+        <item>≥38 weken</item>
+        <item>35-37.6 weken</item>
+        <item>&lt;35 weken</item>
+    </string-array>
+    <string-array name="arrayGewicht">
+        <item>&gt;2000 gram</item>
+        <item>1500-2000 gram</item>
+        <item>1250-1500 gram</item>
+        <item>1000-1250 gram</item>
+        <item>&lt;1000 gram</item>
+    </string-array>
+    <string-array name="arrayRisicofactoren">
+        <item>Afwezig</item>
+        <item>Aanwezig</item>
+    </string-array>
 </resources>

@@ -5,20 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.google.android.material.timepicker.TimeFormat;
 
 import java.util.Calendar;
 
@@ -37,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText bloedWaardeInvoer;
     int bloedWaarde = 0;
     String ndate, bldate;
+    String weight, weeks, risico;
     boolean resetNDisplayDate = false;
     boolean resetNDisplayTime = false;
     boolean resetBLDisplayDate = false;
@@ -103,8 +103,20 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("BLOEDPRIKDATUM_D", blday);
                 intent.putExtra("BLOEDPRIKTIJD_H", blhour);
                 intent.putExtra("BLOEDPRIKTIJD_M", blminutes);
-                //intent.putExtra(); hier komt de dataset
+                intent.putExtra("WEKEN_ZWANGER", weeks);
+                intent.putExtra("GEWICHT", weight);
+                intent.putExtra("RISICO", risico);
                 startActivity(intent);
+            }
+        });
+
+        Button btnRiskInfo = (Button) findViewById(R.id.buttonRiskInfo);
+        btnRiskInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (int i = 0; i < 2; i++) {
+                    Toast.makeText(getApplicationContext(), "Risicofactoren:\n - Bloedgroepanatonismen (ABO, Rh, e.a.)\n - Hemolyse (G6PD, sferocytose e.a.\n - Asfyxie: AS <5 (5') of pH NA <7.0\n - Ziek, suf, (verdenking) infectie\n - Serum albumine <30 g/l", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -243,5 +255,53 @@ public class MainActivity extends AppCompatActivity {
                 blDisplayDate.setText(bldate);
             }
         };
+
+        Spinner spinnerGewicht = findViewById(R.id.spinnerGewicht);
+        ArrayAdapter<CharSequence> adapterGewicht = ArrayAdapter.createFromResource(this, R.array.arrayGewicht, android.R.layout.simple_spinner_item);
+        adapterGewicht.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerGewicht.setAdapter(adapterGewicht);
+        spinnerGewicht.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                weight = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        Spinner spinnerWekenZwanger = findViewById(R.id.spinnerWekenZwanger);
+        ArrayAdapter<CharSequence> adapterWekenZwanger = ArrayAdapter.createFromResource(this, R.array.arrayWekenZwanger, android.R.layout.simple_spinner_item);
+        adapterWekenZwanger.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerWekenZwanger.setAdapter(adapterWekenZwanger);
+        spinnerWekenZwanger.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                weeks = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Spinner spinnerRisico = findViewById(R.id.spinnerRisico);
+        ArrayAdapter<CharSequence> adapterRisico = ArrayAdapter.createFromResource(this, R.array.arrayRisicofactoren, android.R.layout.simple_spinner_item);
+        adapterRisico.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerRisico.setAdapter(adapterRisico);
+        spinnerRisico.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                risico = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+
 }
