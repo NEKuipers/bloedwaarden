@@ -63,7 +63,7 @@
         android:layout_width="320dp"
         android:layout_height="20dp"
         android:layout_marginBottom="12dp"
-        android:text=" Interventiegrenzen voor fototherapie en wisseltransfusie"
+        android:text="@string/interventionValues"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/graph"
         app:layout_constraintEnd_toEndOf="parent"

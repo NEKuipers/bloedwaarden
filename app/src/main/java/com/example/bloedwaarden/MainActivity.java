@@ -1,14 +1,22 @@
 package com.example.bloedwaarden;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.text.format.DateFormat;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,6 +28,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,8 +56,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        loadLocale();
         setContentView(R.layout.activity_main);
         bloedWaardeInvoer = (EditText)findViewById(R.id.bloedwaarde);
+
 
 
         Button btnNavToSecond = (Button) findViewById(R.id.goOnButton);
@@ -115,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 for (int i = 0; i < 2; i++) {
-                    Toast.makeText(getApplicationContext(), "Risicofactoren:\n - Bloedgroepanatonismen (ABO, Rh, e.a.)\n - Hemolyse (G6PD, sferocytose e.a.\n - Asfyxie: AS <5 (5') of pH NA <7.0\n - Ziek, suf, (verdenking) infectie\n - Serum albumine <30 g/l", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getApplicationContext().getString(R.string.riskFactorsToastContent), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -304,4 +315,66 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        loadLocale();
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.languageMenuItem) {
+            loadLocale();
+            showChangeLanguageDialog();
+        } else if (item.getItemId() == R.id.aboutMenuItem) {
+            Intent intent = new Intent(MainActivity.this, AboutPage.class);
+            startActivity(intent);
+        } else {
+            return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
+
+    private void showChangeLanguageDialog() {
+        final String[] listItems = new String[2];
+        listItems[0] = ("Nederlands");
+        listItems[1] = ("English");
+        AlertDialog.Builder mBuilder = new AlertDialog.Builder(MainActivity.this);
+        loadLocale();
+        mBuilder.setTitle(getApplicationContext().getString(R.string.selectLanguage));
+        mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == 0) {
+                    setLocale("nl");
+                    recreate();
+                }
+                else if (which == 1) {
+                    setLocale("en");
+                    recreate();
+                }
+                dialog.dismiss();
+            }
+        });
+        AlertDialog mDialog = mBuilder.create();
+        mDialog.show();
+    }
+
+    private void setLocale(String lang) {
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        SharedPreferences.Editor editor = getSharedPreferences("Settings", MODE_PRIVATE).edit();
+        editor.putString("My_Lang", lang);
+        editor.apply();
+    }
+
+    public void loadLocale(){
+        SharedPreferences prefs = getSharedPreferences("Settings", Activity.MODE_PRIVATE);
+        String language = prefs.getString("My_Lang", "");
+        setLocale(language);
+    }
 }

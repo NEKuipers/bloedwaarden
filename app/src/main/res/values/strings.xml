@@ -1,19 +1,54 @@
 <resources>
     <string name="app_name">Bilicheck</string>
+    <string name="selectBD">Selecteer geboortedatum:</string>
+    <string name="selectBT">Selecteer geboortetijd:</string>
+    <string name="weeksPregnant">Aantal weken zwanger:</string>
+    <string name="riskFactors">Risicofactoren:</string>
+    <string name="selectWeight">Selecteer gewicht:</string>
+    <string name="enterBili">Vul bilirubinegehalte in:</string>
+    <string name="selectMD">Selecteer datum bloedwaardemeting:</string>
+    <string name="selectMT">Selecteer tijd bloedwaardemeting:</string>
+    <string name="goOnBtn">Verder</string>
+    <string name="interventionValues"> Interventiegrenzen voor fototherapie en wisseltransfusie</string>
+    <string name="enteredBV">Ingevulde bloedwaarde: </string>
+    <string name="riskFactorsToastContent">Risicofactoren:  - Bloedgroepanatonismen (ABO, Rh, e.a.)  - Hemolyse (G6PD, sferocytose e.a.  - Asfyxie: AS &lt;5 (5\') of pH NA &lt;7.0  - Ziek, suf, (verdenking) infectie  - Serum albumine &lt;30 g/l</string>
+
+    <string name="weeksLong">≥38 weken</string>
     <string-array name="arrayWekenZwanger">
-        <item>≥38 weken</item>
-        <item>35-37.6 weken</item>
-        <item>&lt;35 weken</item>
+        <item>@string/weeksLong</item>
+        <item>@string/weeksMid</item>
+        <item>@string/weeksShort</item>
     </string-array>
+
+
+    <string name="weight1">&gt;2000 gram</string>
+    <string name="weight2">1500-2000 gram</string>
+    <string name="weight3">1250-1500 gram</string>
+    <string name="weight4">1000-1250 gram</string>
+    <string name="weight5">&lt;1000 gram</string>
     <string-array name="arrayGewicht">
-        <item>&gt;2000 gram</item>
-        <item>1500-2000 gram</item>
-        <item>1250-1500 gram</item>
-        <item>1000-1250 gram</item>
-        <item>&lt;1000 gram</item>
+        <item>@string/weight1</item>
+        <item>@string/weight2</item>
+        <item>@string/weight3</item>
+        <item>@string/weight4</item>
+        <item>@string/weight5</item>
     </string-array>
+
+    <string name="riskFactorNotPresent">Afwezig</string>
+    <string name="riskFactorPresent">Aanwezig</string>
     <string-array name="arrayRisicofactoren">
-        <item>Afwezig</item>
-        <item>Aanwezig</item>
+        <item>@string/riskFactorNotPresent</item>
+        <item>@string/riskFactorPresent</item>
     </string-array>
+    <!--menu items    -->
+    <string name="languageMenuItem">Taal</string>
+    <string name="aboutMenuItem">Over</string>
+    <string name="selectLanguage">Select a language</string>
+
+    <!-- about page -->
+    <string name="backBtn">Terug</string>
+    <string name="aboutText">Bilicheck is gemaakt door Nick Kuipers in samenwerking met dr. Donica Lodder.</string>
+
+    <string name="weeksMid">35-37.6 weken</string>
+    <string name="weeksShort">&lt;35 weken</string>
 </resources>
