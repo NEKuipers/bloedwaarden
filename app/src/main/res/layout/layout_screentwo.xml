@@ -22,8 +22,8 @@
         android:layout_height="293dp"
         android:layout_marginBottom="128dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/textView" />
 
     <TextView
         android:id="@+id/blwCijfer"
@@ -60,10 +60,11 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="357dp"
-        android:layout_height="25dp"
+        android:layout_width="320dp"
+        android:layout_height="20dp"
         android:layout_marginBottom="12dp"
         android:text=" Interventiegrenzen voor fototherapie en wisseltransfusie"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/graph"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

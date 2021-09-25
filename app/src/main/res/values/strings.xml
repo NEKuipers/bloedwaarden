@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bloedwaarden</string>
+    <string name="app_name">Bilicheck</string>
     <string-array name="arrayWekenZwanger">
         <item>≥38 weken</item>
         <item>35-37.6 weken</item>
